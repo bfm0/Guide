@@ -1,0 +1,34 @@
+@mixin flex($class-suffix, $property, $style-value) {
+  .flex-#{$class-suffix} {
+    #{$property}: #{$style-value};
+  }
+}
+
+// Flex Container
+@include flex("container", display, flex);
+
+// Flex direction
+@include flex("row", flex-direction, row);
+@include flex("row-reverse", flex-direction, row-reverse);
+@include flex("column", flex-direction, column);
+@include flex("column-reverse", flex-direction, column-reverse);
+
+// Flex wrap
+@include flex("wrap", flex-wrap, wrap);
+@include flex("nowrap", flex-wrap, nowrap);
+
+// Flex flow
+@include flex("flow-row", flex-flow, row wrap);
+
+// Justify content
+@include flex("justify-content-center", justify-content, center);
+@include flex("justify-content-start", justify-content, flex-start);
+@include flex("justify-content-end", justify-content, flex-end);
+@include flex("justify-content-around", justify-content, space-around);
+@include flex("justify-content-between", justify-content, space-between);
+
+// Align items
+@include flex("align-items-center", align-items, center);
+@include flex("align-items-start", align-items, flex-start);
+@include flex("align-items-end", align-items, flex-end);
+@include flex("align-items-stretch", align-items, stretch);

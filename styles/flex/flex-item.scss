@@ -1,0 +1,39 @@
+@mixin flex($class-suffix, $property, $style-value) {
+  .flex-#{$class-suffix} {
+    #{$property}: #{$style-value};
+  }
+}
+
+// Flex order
+@include flex("order-0", order, 0);
+@include flex("order-1", order, 1);
+@include flex("order-2", order, 2);
+@include flex("order-3", order, 3);
+@include flex("order-4", order, 4);
+
+// Flex grow
+@include flex("grow-1", flex-grow, 1);
+@include flex("grow-2", flex-grow, 2);
+@include flex("grow-3", flex-grow, 3);
+@include flex("grow-4", flex-grow, 4);
+@include flex("grow-5", flex-grow, 5);
+@include flex("grow-6", flex-grow, 6);
+@include flex("grow-7", flex-grow, 7);
+@include flex("grow-8", flex-grow, 8);
+@include flex("grow-9", flex-grow, 9);
+
+// Flex shrink
+@include flex("shrink-1", flex-shrink, 1);
+@include flex("shrink-2", flex-shrink, 2);
+@include flex("shrink-3", flex-shrink, 3);
+@include flex("shrink-4", flex-shrink, 4);
+@include flex("shrink-5", flex-shrink, 5);
+@include flex("shrink-6", flex-shrink, 6);
+@include flex("shrink-7", flex-shrink, 7);
+@include flex("shrink-8", flex-shrink, 8);
+@include flex("shrink-9", flex-shrink, 9);
+
+// Flex align-self
+@include flex("align-self-center", align-self, center);
+@include flex("align-self-start", align-self, flex-start);
+@include flex("align-self-end", align-self, flex-end);

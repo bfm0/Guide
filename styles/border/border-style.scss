@@ -1,0 +1,32 @@
+@mixin border($property) {
+  .border-#{$property} {
+    border-#{"border-"$property}: #{$property};
+  }
+}
+
+@mixin border-last-child($property) {
+  .last-child\:border-#{$property}:last-child {
+    border-#{$property}: #{$property};
+  }
+}
+
+@include border-last-child("solid");
+
+.border-solid {
+  border-style: solid;
+}
+.border-dashed {
+  border-style: dashed;
+}
+.border-dotted {
+  border-style: dotted;
+}
+.border-double {
+  border-style: double;
+}
+.border-hidden {
+  border-style: hidden;
+}
+.border-none {
+  border-style: none;
+}
