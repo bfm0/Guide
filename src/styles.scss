@@ -1,1 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./../styles/flex/flex-container.scss";
+@import "./../styles/flex/flex-item";
+
+@import "./../styles/background/bg-attachment.scss";
+@import "./../styles/background/bg-color.scss";
+@import "./../styles/background/bg-position.scss";
+@import "./../styles/background/bg-size.scss";
+
+@import "./../styles/border/border-color.scss";
+@import "./../styles/border/border-radius.scss";
+@import "./../styles/border/border-width.scss";
+@import "./../styles/border/border-style.scss";
+
+@import "./../styles/grid/grid-container.scss";
+
+@import "./../styles/outline/outline-style.scss";
+
+@import "./../styles/width/width.scss";
+@import "./../styles/width/max-width.scss";
+@import "./../styles/width/min-width.scss";
+@import "./../styles/height/height.scss";
+@import "./../styles/height/max-height.scss";
+
+@import "./../styles/padding/padding.scss";
+@import "./../styles/margin/margin.scss";
+
+@import "./../styles/position/position.scss";
+@import "./../styles/position/positioning.scss";
+
+@import "./../styles/fonts/font-family.scss";
+@import "./../styles/fonts/font-size.scss";
+@import "./../styles/fonts/font-weight.scss";
+@import "./../styles/fonts/text-align.scss";
+@import "./../styles/fonts/text-color.scss";
+@import "./../styles/fonts/text-overflow.scss";
+
+@import "./../styles/overflow/overflow.scss";
+
+@import "./../styles/whitespace/whitespace.scss";
+
+@import "./../styles/cursor/cursor.scss";
+
+@import "./../styles/display/display.scss";

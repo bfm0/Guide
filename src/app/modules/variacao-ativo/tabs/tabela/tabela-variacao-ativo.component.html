@@ -1,0 +1,66 @@
+<div class="container max-w-4xl font-sm">
+  <div class="table-head table-head text-base">
+    <div
+      class="table-row table-row-title bg-new-guide rounded-lg rounded-b-none"
+    >
+      <li class="item-cell text-center flex-justify-content-center">Dia</li>
+      <li class="item-cell text-center flex-justify-content-center">Data</li>
+      <li class="item-cell min-w-6 text-center flex-justify-content-center">
+        Valor
+      </li>
+      <li
+        class="item-cell whitespace-nowrap text-center flex-justify-content-center"
+      >
+        Variação em relação a D-1
+      </li>
+      <li
+        class="item-cell whitespace-nowrap text-center flex-justify-content-center"
+      >
+        Variação em relação à primeira data
+      </li>
+    </div>
+  </div>
+  <div class="table-body text-sm">
+    <div
+      *ngFor="let variacaoAtivo of variacoesAtivo; let i = index"
+      class="table-row"
+    >
+      <li class="item-cell flex-justify-content-center">{{ i + 1 }}</li>
+      <li class="item-cell flex-justify-content-center">
+        {{ variacaoAtivo.timestamp | date : "dd/MM/yyyy" }}
+      </li>
+      <li class="item-cell">
+        {{
+          variacaoAtivo.open
+            ? (variacaoAtivo.open | currency : "BRL" : "symbol" : "1.2-2")
+            : "-"
+        }}
+      </li>
+      <li
+        class="item-cell text-left"
+        [ngClass]="{
+          'text-red-600': variacaoAtivo.variacaoD1 < 0 && variacaoAtivo.open > 0
+        }"
+      >
+        {{
+          variacaoAtivo.open != null
+            ? (variacaoAtivo.variacaoD1 | percent : "1.2-2" : "pt-BR")
+            : "-"
+        }}
+      </li>
+      <li
+        class="item-cell text-left"
+        [ngClass]="{
+          'text-red-600':
+            variacaoAtivo.variacaoPrimeiraData < 0 && variacaoAtivo.open > 0
+        }"
+      >
+        {{
+          variacaoAtivo.open != null
+            ? (variacaoAtivo.variacaoPrimeiraData | percent : "1.2-2" : "pt-BR")
+            : "-"
+        }}
+      </li>
+    </div>
+  </div>
+</div>
