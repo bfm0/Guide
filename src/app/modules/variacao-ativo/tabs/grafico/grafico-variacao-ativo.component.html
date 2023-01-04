@@ -1,1 +1,15 @@
-<div style="width: 800px"><canvas id="meuCanvas"></canvas></div>
+<div class="grid-container grid-template-columns">
+  <form [formGroup]="formGroupGrafico">
+    <select
+      formControlName="opcoesVariacaoAtivo"
+      class="border border-w-3 rounded-sm border-green-950 text-sm px-3 py-1 outline-none"
+    >
+      <option [value]="opcoesVariacoesAtivo.OPEN">Abertura</option>
+      <option [value]="opcoesVariacoesAtivo.D1">Variação D1</option>
+      <option [value]="opcoesVariacoesAtivo.PRIMEIRA_DATA">
+        Variação Primeira Data
+      </option>
+    </select>
+  </form>
+  <div class="position-relative"><canvas id="meuCanvas"></canvas></div>
+</div>
