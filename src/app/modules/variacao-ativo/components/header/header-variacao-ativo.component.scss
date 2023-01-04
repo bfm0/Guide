@@ -1,0 +1,41 @@
+@media screen and (max-width: 870px) {
+  .flex-column-resize {
+    flex-direction: column;
+  }
+
+  .titulo-header {
+    text-align: center;
+  }
+
+  .quadro-recomendacao {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .flex-container-mobile {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .alvo-mobile {
+    margin-top: 5px;
+    margin-left: -47px;
+  }
+
+  .header-text-mobile{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .text-compra-mobile {
+    margin-left: -41px;
+  }
+
+  .quadro-recomendacao {
+    width: 18rem;
+    padding-bottom: 20px;
+  }
+}

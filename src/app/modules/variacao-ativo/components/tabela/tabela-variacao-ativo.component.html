@@ -1,6 +1,7 @@
-<div class="grid-container grid-template-columns">
-  <div class="container max-w-4xl font-sm">
-    <div class="table-head table-head text-base">
+<section class="grid-container grid-template-columns">
+  <div></div>
+  <div class="container font-sm w-full mt-10">
+    <div class="table-head text-base">
       <div
         class="table-row table-row-title bg-green-950 rounded-lg rounded-b-none"
       >
@@ -26,16 +27,24 @@
         *ngFor="let variacaoAtivo of variacoesAtivo; let i = index"
         class="table-row"
       >
-        <li class="item-cell flex-justify-content-center">{{ i + 1 }}</li>
         <li class="item-cell flex-justify-content-center">
-          {{ variacaoAtivo.timestamp | date : "dd/MM/yyyy" }}
+          <span class="item-mobile">Dia: </span><span>{{ i + 1 }}</span>
+        </li>
+        <li class="item-cell flex-justify-content-center">
+          <span class="item-mobile">Data: </span>
+          <span>
+            {{ variacaoAtivo.timestamp | date : "dd/MM/yyyy" }}
+          </span>
         </li>
         <li class="item-cell">
-          {{
-            variacaoAtivo.open
-              ? (variacaoAtivo.open | currency : "BRL" : "symbol" : "1.2-2")
-              : "-"
-          }}
+          <span class="item-mobile">Valor: </span>
+          <span>
+            {{
+              variacaoAtivo.open
+                ? (variacaoAtivo.open | currency : "BRL" : "symbol" : "1.2-2")
+                : "-"
+            }}
+          </span>
         </li>
         <li
           class="item-cell text-left"
@@ -43,11 +52,14 @@
             formataVariacoesNegativas(variacaoAtivo, variacaoAtivo.variacaoD1)
           "
         >
-          {{
-            variacaoAtivo.variacaoD1 !== null
-              ? (variacaoAtivo.variacaoD1 | percent : "1.2-2" : "pt-BR")
-              : "-"
-          }}
+          <span class="item-mobile">Variação em relação a D-1: </span>
+          <span>
+            {{
+              variacaoAtivo.variacaoD1 !== null
+                ? (variacaoAtivo.variacaoD1 | percent : "1.2-2" : "pt-BR")
+                : "-"
+            }}
+          </span>
         </li>
         <li
           class="item-cell text-left"
@@ -58,14 +70,18 @@
             )
           "
         >
-          {{
-            variacaoAtivo.variacaoPrimeiraData !== null
-              ? (variacaoAtivo.variacaoPrimeiraData
-                | percent : "1.2-2" : "pt-BR")
-              : "-"
-          }}
+          <span class="item-mobile">Variação em relação à primeira data: </span>
+          <span>
+            {{
+              variacaoAtivo.variacaoPrimeiraData !== null
+                ? (variacaoAtivo.variacaoPrimeiraData
+                  | percent : "1.2-2" : "pt-BR")
+                : "-"
+            }}
+          </span>
         </li>
       </div>
     </div>
   </div>
-</div>
+  <div></div>
+</section>

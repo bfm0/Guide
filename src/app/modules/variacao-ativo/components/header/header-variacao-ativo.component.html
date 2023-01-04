@@ -1,22 +1,22 @@
 <header class="grid-container grid-template-columns bg-green-950 w-full py-10">
   <div></div>
-  <div class="flex-container flex-row flex-justify-content-between">
+  <div class="flex-container flex-row flex-column-resize flex-justify-content-between titulo-header">
     <div class="font-bold">
-      <p class="text-3xl text-new-guide">Flash Empresas (Research)</p>
-      <p class="text-6xl text-white my-1">GOLL4</p>
-      <div class="text-5xl text-white my-3">
+      <p class="text-3xl text-new-guide header-text-mobile">Flash Empresas (Research)</p>
+      <p class="text-6xl text-white my-1 header-text-mobile">GOLL4</p>
+      <div class="text-5xl text-white my-3 header-text-mobile">
         Ações Gol Linhas Aéreas (GOLL4) |
       </div>
-      <div class="text-5xl text-white">Guide Investimentos</div>
+      <div class="text-5xl text-white header-text-mobile">Guide Investimentos</div>
     </div>
     <div
-      class="rounded-xl bg-white w-96 h-72 my-auto flex-container flex-column justify-items-center"
+      class="rounded-xl bg-white w-96 h-72 my-auto flex-container flex-column justify-items-center quadro-recomendacao"
     >
       <img
         class="w-32 mt-8 mx-auto rounded-xl"
         src="./../../../../assets/images/gol.jpg"
       />
-      <div class="flex-container flex-row flex-container flex-row px-5 mt-6">
+      <div class="flex-container flex-row flex-container flex-container-mobile px-5 mt-6">
         <div class="flex-container flex-row flex-align-items-center">
           <img
             class="w-8 h-8 mr-2"
@@ -24,15 +24,15 @@
           />
           <div>
             <p class="my-0">Recomendação:</p>
-            <p class="font-bold my-0 text-lg">Compra</p>
+            <p class="font-bold my-0 text-lg text-compra-mobile">Compra</p>
           </div>
         </div>
-        <div class="flex-container flex-row flex-align-items-center ml-10">
+        <div class="flex-container flex-row flex-align-items-center ml-10 alvo-mobile">
           <img
             class="w-12 h-6 mr-2"
             src="./../../../../assets/images/nota-dolar.png"
           />
-          <div>
+          <div class="">
             <p class="my-0 whitespace-nowrap">Preço Alvo:</p>
             <p class="font-bold my-0 text-lg">
               {{ 30.0 | currency : "BRL" : "symbol" : "1.2-2" }}

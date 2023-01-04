@@ -1,0 +1,14 @@
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+canvas {
+  height: 300px;
+  width: 800px;
+}
+
+.canvas-container {
+  min-height: 300px;
+}

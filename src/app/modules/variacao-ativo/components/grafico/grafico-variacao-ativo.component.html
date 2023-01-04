@@ -1,4 +1,6 @@
-<div class="grid-container grid-template-columns">
+<section class="grid-container grid-template-columns mt-10">
+  <div></div>
+
   <form [formGroup]="formGroupGrafico">
     <select
       formControlName="opcoesVariacaoAtivo"
@@ -10,6 +12,7 @@
         Variação Primeira Data
       </option>
     </select>
+    <div class="position-relative mx-auto canvas-container"><canvas id="meuCanvas"></canvas></div>
   </form>
-  <div class="position-relative"><canvas id="meuCanvas"></canvas></div>
-</div>
+  <div></div>
+</section>

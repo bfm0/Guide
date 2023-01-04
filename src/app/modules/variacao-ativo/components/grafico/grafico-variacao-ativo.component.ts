@@ -112,6 +112,7 @@ export class GraficoVariacaoAtivoComponent implements OnInit, OnDestroy {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         scales: {
           y: {
             ticks: {

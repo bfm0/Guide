@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { VariacaoAtivoRoutingModule } from './variacao-ativo-routing.module';
 import { VariacaoAtivoComponent } from './variacao-ativo.component';
 import { YahooFinanceModule } from './services/yahoo-finance.module';
-import { HeaderVariacaoAtivoModule } from './header/header-variacao-ativo.module';
-import { TabsVariacaoAtivoModule } from './tabs/tabs-variacao-ativo.module';
+import { HeaderVariacaoAtivoModule } from './components/header/header-variacao-ativo.module';
+import { TabelaVariacaoAtivoModule } from './components/tabela/tabela-variacao-ativo.module';
+import { GraficoVariacaoAtivoModule } from './components/grafico/grafico-variacao-ativo.module';
 
 @NgModule({
   declarations: [VariacaoAtivoComponent],
@@ -12,7 +13,8 @@ import { TabsVariacaoAtivoModule } from './tabs/tabs-variacao-ativo.module';
     CommonModule,
     VariacaoAtivoRoutingModule,
     HeaderVariacaoAtivoModule,
-    TabsVariacaoAtivoModule,
+    TabelaVariacaoAtivoModule,
+    GraficoVariacaoAtivoModule,
     YahooFinanceModule,
   ],
 })

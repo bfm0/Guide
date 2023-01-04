@@ -1,1 +1,15 @@
+@media screen and (max-width: 1200px) {
+  .header-options-mobile {
+    display: none !important;
+  }
+}
 
+@media screen and (max-width: 550px) {
+  .header-buttons-mobile,
+  .header-columns-mobile {
+    flex-direction: column;
+  }
+  .header-button-mobile {
+    margin-top: 15px;
+  }
+}
