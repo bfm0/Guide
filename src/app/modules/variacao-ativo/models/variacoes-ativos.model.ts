@@ -1,5 +1,5 @@
 export interface VariacoesAtivo {
-  timestamp: number;
+  timestamp: Date;
   open: number;
   variacaoD1: number | null;
   variacaoPrimeiraData: number | null;

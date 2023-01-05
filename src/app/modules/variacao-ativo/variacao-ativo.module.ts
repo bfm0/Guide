@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { VariacaoAtivoRoutingModule } from './variacao-ativo-routing.module';
 import { VariacaoAtivoComponent } from './variacao-ativo.component';
 import { YahooFinanceModule } from './services/yahoo-finance.module';

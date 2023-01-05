@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { TabelaVariacaoAtivoComponent } from './tabela-variacao-ativo.component';
 
 @NgModule({

@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './header-variacao-ativo.component.html',
   styleUrls: ['./header-variacao-ativo.component.scss'],
 })
-export class HeaderVariacaoAtivoComponent {}
+export class HeaderVariacaoAtivoComponent {
+  PRECO_ALVO_EXEMPLO: number = 7.0;
+}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { YahooFinanceService } from './services/yahoo-finance.service';
 
 @Component({
@@ -13,6 +14,6 @@ export class VariacaoAtivoComponent {
   constructor(private _yahooFinanceService: YahooFinanceService) {}
 
   ngOnInit(): void {
-    this._yahooFinanceService.getVariacoesAtivo(this.GOLL4);
+    this._yahooFinanceService.setVariacoesAtivo(this.GOLL4);
   }
 }

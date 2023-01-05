@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { VariacaoAtivoComponent } from './variacao-ativo.component';
 
 const routes: Routes = [

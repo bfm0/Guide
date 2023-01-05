@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { Subject } from 'rxjs';
 import { VariacoesAtivo } from '../models/variacoes-ativos.model';
 
@@ -12,7 +13,7 @@ export class YahooFinanceService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getVariacoesAtivo(siglaAtivo: string) {
+  setVariacoesAtivo(siglaAtivo: string): void {
     this.httpClient
       .get('/api/v8/finance/chart/GOLL4.SA')
       .subscribe((variacoesAtivo) => {
@@ -20,39 +21,49 @@ export class YahooFinanceService {
       });
   }
 
-  getTrintaUltimosPregoes(variacoesAtivo: any) {
+  getTrintaUltimosPregoes(variacoesAtivo: any): void {
     const resultadoPregoes = variacoesAtivo?.chart?.result;
-    const timestaps = resultadoPregoes[0].timestamp;
+    const timestaps: Array<Date> = resultadoPregoes[0].timestamp;
     const opens = resultadoPregoes[0].indicators?.quote[0].open;
-    const timestapsUltimosPregoes = this.extraiUltimosDadosPregoes(timestaps);
-    const opensUltimosPregoes = this.extraiUltimosDadosPregoes(opens);
+    const timestapsUltimosPregoes: Array<Date> =
+      this.extraiUltimosDadosPregoes(timestaps);
+    const aberturasUltimosPregoes: Array<number> =
+      this.extraiUltimosDadosPregoes(opens);
 
-    const primeiroOpen = opensUltimosPregoes[0];
-
-    if (!opensUltimosPregoes || opensUltimosPregoes.length < 2) {
+    if (!aberturasUltimosPregoes || aberturasUltimosPregoes.length < 2) {
       throw 'Bad input!';
     }
 
+    const variacoesAtivoUltimosPregoes: Array<VariacoesAtivo> =
+      this.montaVariacoesAtivoUltimosPregoes(
+        aberturasUltimosPregoes,
+        timestapsUltimosPregoes
+      );
+
+    this.variacoesAtivo.next(variacoesAtivoUltimosPregoes);
+  }
+
+  montaVariacoesAtivoUltimosPregoes(
+    aberturasUltimosPregoes: Array<number>,
+    timestapsUltimosPregoes: Array<Date>
+  ): Array<VariacoesAtivo> {
     const variacoesAtivoUltimosPregoes: Array<VariacoesAtivo> = [];
+    const primeiraAbertura: number = aberturasUltimosPregoes[0];
 
-    for (var i = 1; i < opensUltimosPregoes.length; i++) {
-      var openAtual = opensUltimosPregoes[i];
-      var openAnterior = opensUltimosPregoes[i - 1];
+    for (var i = 1; i < aberturasUltimosPregoes.length; i++) {
+      const openAtual: number | null = aberturasUltimosPregoes[i];
+      const openAnterior: number | null = aberturasUltimosPregoes[i - 1];
 
-      let variacaoPrimeiraData: number | null;
-      let variacaoD1: number | null;
+      const variacaoPrimeiraData: number | null = this.calculaVariacoes(
+        openAtual,
+        primeiraAbertura
+      );
+      const variacaoD1: number | null = this.calculaVariacoes(
+        openAtual,
+        openAnterior
+      );
 
-      variacaoPrimeiraData =
-        openAtual && primeiroOpen
-          ? (openAtual - primeiroOpen) / primeiroOpen
-          : null;
-
-      variacaoD1 =
-        openAtual && openAnterior
-          ? (openAtual - openAnterior) / openAnterior
-          : null;
-
-      const timestamp = timestapsUltimosPregoes[i];
+      const timestamp: Date = timestapsUltimosPregoes[i];
 
       variacoesAtivoUltimosPregoes.push({
         timestamp: timestamp,
@@ -61,8 +72,16 @@ export class YahooFinanceService {
         variacaoPrimeiraData: variacaoPrimeiraData,
       });
     }
+    return variacoesAtivoUltimosPregoes.slice();
+  }
 
-    this.variacoesAtivo.next(variacoesAtivoUltimosPregoes);
+  calculaVariacoes(
+    aberturaAtual: number,
+    aberturaReferencia: number
+  ): number | null {
+    return aberturaAtual && aberturaReferencia
+      ? (aberturaAtual - aberturaReferencia) / aberturaReferencia
+      : null;
   }
 
   extraiUltimosDadosPregoes(dadosPregao: any) {
