@@ -3,6 +3,11 @@
     display: none !important;
   }
 }
+@media screen and (min-width: 1200px) {
+  .burger-menu {
+    display: none;
+  }
+}
 
 @media screen and (max-width: 550px) {
   .header-buttons-mobile,

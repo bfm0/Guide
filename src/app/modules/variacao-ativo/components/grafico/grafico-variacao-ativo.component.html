@@ -2,17 +2,25 @@
   <div></div>
 
   <form [formGroup]="formGroupGrafico">
-    <select
-      formControlName="opcoesVariacaoAtivo"
-      class="border border-w-3 rounded-sm border-green-950 text-sm px-3 py-1 outline-none"
+    <label class="d-block font-bold mb-1 text-green-950"
+      >Opções de variação</label
     >
-      <option [value]="opcoesVariacoesAtivo.OPEN">Abertura</option>
-      <option [value]="opcoesVariacoesAtivo.D1">Variação D1</option>
-      <option [value]="opcoesVariacoesAtivo.PRIMEIRA_DATA">
-        Variação Primeira Data
-      </option>
-    </select>
-    <div class="position-relative mx-auto canvas-container"><canvas id="meuCanvas"></canvas></div>
+    <div class="position-relative">
+      <select
+        formControlName="opcoesVariacaoAtivo"
+        class="border border-w-3 rounded border-green-950 text-sm pl-3 pr-5 py-1 mb-3 outline-none cursor-pointer"
+      >
+        <option [value]="opcoesVariacoesAtivo.OPEN">Abertura</option>
+        <option [value]="opcoesVariacoesAtivo.D1">Variação D1</option>
+        <option [value]="opcoesVariacoesAtivo.PRIMEIRA_DATA">
+          Variação Primeira Data
+        </option>
+      </select>
+    </div>
+
+    <div class="position-relative mx-auto canvas-container">
+      <canvas id="meuCanvas"></canvas>
+    </div>
   </form>
   <div></div>
 </section>

@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+
 import { VariacoesAtivo } from '../../models/variacoes-ativos.model';
 import { YahooFinanceService } from '../../services/yahoo-finance.service';
 

@@ -1,5 +1,5 @@
 export enum opcoesVariacoesAtivo {
-  OPEN = 'OPEN',
-  D1 = 'D1',
-  PRIMEIRA_DATA = 'PRIMEIRA_DATA'
+  OPEN = 'Valor de Abertura',
+  D1 = 'Variação em relação a D-1',
+  PRIMEIRA_DATA = 'Variação em relação à primeira data',
 }

@@ -1,5 +1,11 @@
 import { DatePipe, DecimalPipe, PercentPipe } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 
 import { distinctUntilChanged, Subscription } from 'rxjs';
@@ -29,7 +35,7 @@ export class GraficoVariacaoAtivoComponent implements OnInit, OnDestroy {
 
   constructor(
     private _yahooService: YahooFinanceService,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
   ) {}
 
   ngOnInit(): void {
@@ -37,6 +43,16 @@ export class GraficoVariacaoAtivoComponent implements OnInit, OnDestroy {
     this.subscreveMudancasFormGroup();
     this.subscreveYahooFinance();
     this.ouveResizeDaTela();
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('resize', () => {
+      this.destroiChart();
+      this.montaGraficoValorAbertura(this.opcaoSelecionadaVariacoesAtivo);
+    });
+
+    this.controlValueChangesSubscription.unsubscribe();
+    this.yahooFinanceSubscription.unsubscribe();
   }
 
   ouveResizeDaTela() {
@@ -102,7 +118,7 @@ export class GraficoVariacaoAtivoComponent implements OnInit, OnDestroy {
         labels: this.timestamps,
         datasets: [
           {
-            label: 'Valor de Abertura',
+            label: opcaoVariacaoAtivo,
             data: datasetSeletionado,
             borderWidth: 2,
             borderColor: 'rgb(20 83 45)',
@@ -157,22 +173,12 @@ export class GraficoVariacaoAtivoComponent implements OnInit, OnDestroy {
     const index = tooltipItems.dataIndex;
     let data: number = tooltipItems.dataset.data[index] as number;
     if (opcaoVariacaoAtivo === this.opcoesVariacoesAtivo.OPEN) {
-      return ('R$' + decimalPipe.transform(data)) as string;
+      return ('R$ ' + decimalPipe.transform(data)) as string;
     }
     return percentPipe.transform(data, '1.2-2') as string;
   }
 
   destroiChart() {
     this.chart.destroy();
-  }
-
-  ngOnDestroy(): void {
-    window.removeEventListener('resize', () => {
-      this.destroiChart();
-      this.montaGraficoValorAbertura(this.opcaoSelecionadaVariacoesAtivo);
-    });
-
-    this.controlValueChangesSubscription.unsubscribe();
-    this.yahooFinanceSubscription.unsubscribe();
   }
 }
