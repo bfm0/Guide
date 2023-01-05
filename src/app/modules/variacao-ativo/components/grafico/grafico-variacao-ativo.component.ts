@@ -24,7 +24,7 @@ export class GraficoVariacaoAtivoComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._graficoService.inicializaServicoGrafico();
-      this.montaFormGroupGrafico();
+    this.montaFormGroupGrafico();
     this.subscreveMudancasFormGroup();
   }
 

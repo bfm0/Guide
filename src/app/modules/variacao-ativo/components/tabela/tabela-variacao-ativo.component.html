@@ -1,4 +1,4 @@
-<section class="grid-container grid-template-columns">
+<section class="grid-container grid-template-columns mb-10">
   <div></div>
   <div class="container font-sm w-full mt-10">
     <div class="table-head text-base">
@@ -22,7 +22,10 @@
         </li>
       </div>
     </div>
-    <div class="table-body text-sm">
+    <div
+      class="table-body text-sm"
+      *ngIf="variacoesAtivo?.length; else elseBlock"
+    >
       <div
         *ngFor="let variacaoAtivo of variacoesAtivo; let i = index"
         class="table-row"
@@ -82,6 +85,9 @@
         </li>
       </div>
     </div>
+    <ng-template #elseBlock>
+      <div class="mt-2">Nenhum valor encontrado para o ativo.</div>
+    </ng-template>
   </div>
   <div></div>
 </section>

@@ -8,7 +8,9 @@ import { VariacoesAtivo } from '../models/variacoes-ativos.model';
   providedIn: 'root',
 })
 export class YahooFinanceService {
-  variacoesAtivo = new Subject<Array<VariacoesAtivo>>();
+  variacoesAtivo: Subject<Array<VariacoesAtivo>> = new Subject<
+    Array<VariacoesAtivo>
+  >();
   private QTD_ULTIMOS_PREGOES: number = 30;
 
   constructor(private httpClient: HttpClient) {}
@@ -24,14 +26,14 @@ export class YahooFinanceService {
   getTrintaUltimosPregoes(variacoesAtivo: any): void {
     const resultadoPregoes = variacoesAtivo?.chart?.result;
     const timestaps: Array<Date> = resultadoPregoes[0].timestamp;
-    const opens = resultadoPregoes[0].indicators?.quote[0].open;
+    const aberturas = resultadoPregoes[0].indicators?.quote[0].open;
     const timestapsUltimosPregoes: Array<Date> =
       this.extraiUltimosDadosPregoes(timestaps);
     const aberturasUltimosPregoes: Array<number> =
-      this.extraiUltimosDadosPregoes(opens);
+      this.extraiUltimosDadosPregoes(aberturas);
 
     if (!aberturasUltimosPregoes || aberturasUltimosPregoes.length < 2) {
-      throw 'Bad input!';
+      throw 'Sem valores de abertura dos últimos pregões';
     }
 
     const variacoesAtivoUltimosPregoes: Array<VariacoesAtivo> =
