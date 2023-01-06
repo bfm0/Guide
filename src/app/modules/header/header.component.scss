@@ -18,3 +18,19 @@
     margin-top: 15px;
   }
 }
+
+.registrar-button:hover,
+.login-button:hover {
+  background-color: #fff;
+  transition: background-color 400ms linear;
+  &.login-button {
+    color: rgb(0 82 79);
+  }
+}
+
+.header-options-mobile div {
+  &:hover {
+    transition: color 200ms linear;
+    color: rgb(0 131 127);
+  }
+}

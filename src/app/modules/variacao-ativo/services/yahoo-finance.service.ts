@@ -18,9 +18,20 @@ export class YahooFinanceService {
   setVariacoesAtivo(siglaAtivo: string): void {
     this.httpClient
       .get('/api/v8/finance/chart/GOLL4.SA')
-      .subscribe((variacoesAtivo) => {
-        this.getTrintaUltimosPregoes(variacoesAtivo);
+      .subscribe((variacoesAtivo: any) => {
+        const haAberturas: boolean = this.verificaSeHaAberturas(variacoesAtivo);
+        if (haAberturas) {
+          this.getTrintaUltimosPregoes(variacoesAtivo);
+        }
       });
+  }
+
+  verificaSeHaAberturas(variacoesAtivo: any): boolean {
+    return (
+      variacoesAtivo?.chart?.result?.length &&
+      variacoesAtivo?.chart?.result[0].indicators?.quote?.length &&
+      variacoesAtivo?.chart?.result[0].indicators?.quote[0].open
+    );
   }
 
   getTrintaUltimosPregoes(variacoesAtivo: any): void {
@@ -68,6 +79,7 @@ export class YahooFinanceService {
       const timestamp: Date = timestapsUltimosPregoes[i];
 
       variacoesAtivoUltimosPregoes.push({
+        id: i,
         timestamp: timestamp,
         open: openAtual,
         variacaoD1: variacaoD1,

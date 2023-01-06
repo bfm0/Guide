@@ -5,20 +5,62 @@
       <div
         class="table-row table-row-title bg-green-950 rounded-lg rounded-b-none"
       >
-        <li class="item-cell text-center flex-justify-content-center">Dia</li>
-        <li class="item-cell text-center flex-justify-content-center">Data</li>
-        <li class="item-cell min-w-6 text-center flex-justify-content-center">
-          Valor
+        <li
+          class="item-cell header-cell text-center flex-justify-content-center position-relative cursor-pointer"
+          (click)="ordenarTabela(opcoesOrdenacao.DIA)"
+        >
+          <img
+            src="./../../../../../assets/images/arrow-down-white.png"
+            class="position-absolute right-3 top-4 w-2-half arrow-down"
+            [ngClass]="rotacionaFlechaOrdenacao(opcoesOrdenacao.DIA)"
+          />
+          {{ titulosHeader.DIA }}
         </li>
         <li
-          class="item-cell whitespace-nowrap text-center flex-justify-content-center"
+          class="item-cell header-cell text-center flex-justify-content-center position-relative cursor-pointer"
+          (click)="ordenarTabela(opcoesOrdenacao.DATA)"
         >
-          Variação em relação a D-1
+          <img
+            src="./../../../../../assets/images/arrow-down-white.png"
+            class="position-absolute right-3 top-4 w-2-half arrow-down"
+            [ngClass]="rotacionaFlechaOrdenacao(opcoesOrdenacao.DATA)"
+          />
+          {{ titulosHeader.DATA }}
         </li>
         <li
-          class="item-cell whitespace-nowrap text-center flex-justify-content-center"
+          class="item-cell header-cell min-w-6 text-center flex-justify-content-center position-relative cursor-pointer"
+          (click)="ordenarTabela(opcoesOrdenacao.VALOR)"
         >
-          Variação em relação à primeira data
+          <img
+            src="./../../../../../assets/images/arrow-down-white.png"
+            class="position-absolute right-3 top-4 w-2-half arrow-down"
+            [ngClass]="rotacionaFlechaOrdenacao(opcoesOrdenacao.VALOR)"
+          />
+          {{ titulosHeader.VALOR }}
+        </li>
+        <li
+          class="item-cell header-cell whitespace-nowrap text-center flex-justify-content-center position-relative cursor-pointer"
+          (click)="ordenarTabela(opcoesOrdenacao.VARIACAO_D1)"
+        >
+          <img
+            src="./../../../../../assets/images/arrow-down-white.png"
+            class="position-absolute right-3 top-4 w-2-half arrow-down"
+            [ngClass]="rotacionaFlechaOrdenacao(opcoesOrdenacao.VARIACAO_D1)"
+          />
+          {{ titulosHeader.VARIACAO_D1 }}
+        </li>
+        <li
+          class="item-cell header-cell whitespace-nowrap text-center flex-justify-content-center position-relative cursor-pointer"
+          (click)="ordenarTabela(opcoesOrdenacao.VARIACAO_PRIMEIRA_DATA)"
+        >
+          <img
+            src="./../../../../../assets/images/arrow-down-white.png"
+            class="position-absolute right-3 top-4 w-2-half arrow-down"
+            [ngClass]="
+              rotacionaFlechaOrdenacao(opcoesOrdenacao.VARIACAO_PRIMEIRA_DATA)
+            "
+          />
+          {{ titulosHeader.VARIACAO_PRIMEIRA_DATA }}
         </li>
       </div>
     </div>
@@ -27,11 +69,12 @@
       *ngIf="variacoesAtivo?.length; else elseBlock"
     >
       <div
-        *ngFor="let variacaoAtivo of variacoesAtivo; let i = index"
+        *ngFor="let variacaoAtivo of variacoesAtivoOrdenada; let i = index; trackBy:trackByDia"
         class="table-row"
       >
         <li class="item-cell flex-justify-content-center">
-          <span class="item-mobile">Dia: </span><span>{{ i + 1 }}</span>
+          <span class="item-mobile">Dia: </span
+          ><span>{{ variacaoAtivo.id }}</span>
         </li>
         <li class="item-cell flex-justify-content-center">
           <span class="item-mobile">Data: </span>
@@ -86,7 +129,7 @@
       </div>
     </div>
     <ng-template #elseBlock>
-      <div class="mt-2">Nenhum valor encontrado para o ativo.</div>
+      <div class="mt-2">Yahoo Finance sem valores de abertura</div>
     </ng-template>
   </div>
   <div></div>

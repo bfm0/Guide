@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 
 import { distinctUntilChanged, Subscription } from 'rxjs';
+import { VariacoesAtivo } from '../../models/variacoes-ativos.model';
+import { YahooFinanceService } from '../../services/yahoo-finance.service';
 
 import { opcoesVariacoesAtivo } from './enums/opcoes-variacoes.enum';
 import { GraficoService } from './services/grafico.service';
@@ -16,10 +18,11 @@ export class GraficoVariacaoAtivoComponent implements OnInit, OnDestroy {
   opcaoSelecionadaVariacoesAtivo = opcoesVariacoesAtivo.OPEN;
   formGroupGrafico: FormGroup = new FormGroup({});
   controlValueChangesSubscription: Subscription = new Subscription();
+  variacoesAtivo: Array<VariacoesAtivo> = [];
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _graficoService: GraficoService
+    private _graficoService: GraficoService,
   ) {}
 
   ngOnInit(): void {
