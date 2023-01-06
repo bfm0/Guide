@@ -2,7 +2,7 @@
 - Execute o comando npm install para instalar as dependências do projeto (e.g. Jest, Chart.js)
 
 # INSTRUÇÕES PARA EXECUÇÃO DO PROJETO
-- Um proxy foi configurado para que o endpoint pudesse ser acessado. Para usá-lo, deve-se executar o comando "npm run start".
+- Um proxy foi configurado para que o endpoint "https://query2.finance.yahoo.com" pudesse ser acessado. Para usá-lo, deve-se executar o comando "npm run start".
 
 # INSTRUÇÕES PARA EXECUÇÃO DE TESTES UNITÁRIOS
 - A biblioteca usada para testes unitários foi "Jest". Para executar os testes com cobertura, usa-se "npm run test:cover". Por favor, note que mais de 80% de cobertura de testes foi alcançada.
