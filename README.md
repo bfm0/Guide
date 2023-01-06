@@ -1,3 +1,15 @@
+# INSTRUÇÕES DE INSTALAÇÃO DE DEPENDÊNCIAS
+- Execute o comando npm install para instalar as dependências do projeto (e.g. Jest, Chart.js)
+
+# INSTRUÇÕES PARA EXECUÇÃO DO PROJETO
+- Um proxy foi configurado para que o endpoint pudesse ser acessado. Para usá-lo, deve-se executar o comando "npm run start".
+
+# INSTRUÇÕES PARA EXECUÇÃO DE TESTES UNITÁRIOS
+- A biblioteca usada para testes unitários foi "Jest". Para executar os testes com cobertura, usa-se "npm run test:cover". Por favor, note que mais de 80% de cobertura de testes foi alcançada.
+
+# RESPONSIVIDADE DA TELA
+- A tela de veriação de ativo foi desenvolvida com responsividade em mente, caso queiram testar.
+
 # MyApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.

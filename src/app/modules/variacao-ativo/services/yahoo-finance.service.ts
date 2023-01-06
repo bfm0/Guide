@@ -17,7 +17,7 @@ export class YahooFinanceService {
 
   setVariacoesAtivo(siglaAtivo: string): void {
     this.httpClient
-      .get('/api/v8/finance/chart/GOLL4.SA')
+      .get('/api/v8/finance/chart/GOLL4.SA?range=35d&interval=1d')
       .subscribe((variacoesAtivo: any) => {
         const haAberturas: boolean = this.verificaSeHaAberturas(variacoesAtivo);
         if (haAberturas) {
@@ -76,7 +76,9 @@ export class YahooFinanceService {
         openAnterior
       );
 
-      const timestamp: Date = timestapsUltimosPregoes[i];
+      const epochTime = Number(timestapsUltimosPregoes[i]) * 1000;
+
+      const timestamp: Date = new Date(epochTime);
 
       variacoesAtivoUltimosPregoes.push({
         id: i,

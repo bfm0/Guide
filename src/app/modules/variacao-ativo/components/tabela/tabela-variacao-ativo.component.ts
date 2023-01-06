@@ -51,7 +51,7 @@ export class TabelaVariacaoAtivoComponent {
     );
   }
 
-  ordenarTabela(colunaAtual: opcoesOrdenacao) {
+  ordenaTabela(colunaAtual: opcoesOrdenacao) {
     const { colunaOrdenadaAnteriormente, ordenacaoAscendente } =
       this._tabelaVariacaoAtivoService.ordenarTabela(
         colunaAtual,

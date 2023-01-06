@@ -47,7 +47,8 @@
     ],
     "coveragePathIgnorePatterns": [
       "<rootDir>/src/app/modules/variacao-ativo/components/grafico/services/",
-      "<rootDir>/src/app/modules/variacao-ativo/mocks-testes-unitarios/"
+      "<rootDir>/src/app/modules/variacao-ativo/mocks-testes-unitarios/",
+      "<rootDir>/src/app/modules/variacao-ativo/services/yahoo-finance.service.ts"
     ],
     "globals": {
       "ts-jest": {
